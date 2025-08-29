@@ -13,7 +13,7 @@ def index():
     word_count = 0
     sentence_count = 0
     token_count = 0
-    tokens = []
+    paragraph = ""
 
     if request.method == 'POST':
         paragraph = request.form['paragraph']
@@ -22,7 +22,11 @@ def index():
         sentence_count = paragraph.count('.') + paragraph.count('!') + paragraph.count('?')
         token_count = len(tokens)
 
-    return render_template('index.html', word_count=word_count, sentence_count=sentence_count, token_count=token_count, tokens=tokens)
+    return render_template('index.html', 
+                         word_count=word_count, 
+                         sentence_count=sentence_count, 
+                         token_count=token_count, 
+                         paragraph=paragraph)
 
 if __name__ == '__main__':
     app.run(debug=True)
