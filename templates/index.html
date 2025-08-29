@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Token Counter</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Token Length Checker</h1>
+        <form action="/" method="POST">
+            <textarea name="paragraph" rows="10" cols="50" placeholder="Enter your paragraph here..." required></textarea>
+            <br>
+            <button type="submit">Count Tokens</button>
+        </form>
+        {% if word_count is not none %}
+        <div class="results">
+            <h2>Results:</h2>
+            <p><strong>Word Count:</strong> {{ word_count }}</p>
+            <p><strong>Sentence Count:</strong> {{ sentence_count }}</p>
+            <p><strong>Token Count:</strong> {{ token_count }}</p>
+            <h3>Tokens:</h3>
+            <ul>
+                {% for token in tokens %}
+                <li>{{ token }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
